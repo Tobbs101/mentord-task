@@ -1,52 +1,10 @@
-import Image from "next/image";
-import AddToCartButton from "@/components/AddToCartButton";
+import { Metadata } from "next";
 
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
+import ProductPage from "@/pages/ProductPage";
+
+export default ProductPage;
+
+export const metadata: Metadata = {
+  title: "Store - Product Details",
+  description: "Product Details Page for our Fake Store",
 };
-
-async function getProduct(id: string): Promise<Product> {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Failed to fetch product");
-  return res.json();
-}
-
-export default async function ProductDetails({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const p = await getProduct(params.id);
-  return (
-    <section className="grid gap-6 md:grid-cols-2">
-      <div className="relative w-full aspect-square border border-[#161616]/15 rounded">
-        <Image src={p.image} alt={p.title} fill className="object-contain" />
-      </div>
-      <div className="grid gap-4 content-start">
-        <h1 className="text-2xl font-semibold text-[#161616]">{p.title}</h1>
-        <div className="text-sm text-[#161616]/70">{p.category}</div>
-        <div className="text-base font-semibold text-[#161616]">
-          ${p.price.toFixed(2)}
-        </div>
-        <p className="text-sm text-[#161616]/80 leading-relaxed">
-          {p.description}
-        </p>
-        <div>
-          <AddToCartButton
-            id={p.id}
-            title={p.title}
-            price={p.price}
-            image={p.image}
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
