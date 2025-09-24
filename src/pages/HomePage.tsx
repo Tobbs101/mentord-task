@@ -28,7 +28,11 @@ export default function HomePage() {
         Browse a curated selection from the Fake Store API. Add items to your
         cart and check out when you are ready.
       </motion.p>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
         <Link
           href="/products"
           className="inline-block bg-[#161616] text-white px-5 py-3 text-sm rounded hover:opacity-90"

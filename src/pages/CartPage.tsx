@@ -2,15 +2,12 @@
 
 import Image from "next/image";
 import { useCartStore } from "@/store/cart";
-import ErrorFallback from "@/components/ErrorFallback";
 
 export default function CartPage() {
-  const { items, removeItem, total, clear } = useCartStore((s) => ({
-    items: s.items,
-    removeItem: s.removeItem,
-    total: s.total,
-    clear: s.clear,
-  }));
+  const items = useCartStore((s) => s.items);
+  const removeItem = useCartStore((s) => s.removeItem);
+  const total = useCartStore((s) => s.total);
+  const clear = useCartStore((s) => s.clear);
 
   return (
     <section className="grid gap-6">

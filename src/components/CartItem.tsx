@@ -16,12 +16,7 @@ const CartItem: React.FC<CartItemProps> = ({
   price,
   quantity,
 }) => {
-  const { items, removeItem, total, clear } = useCartStore((store) => ({
-    items: store.items,
-    removeItem: store.removeItem,
-    total: store.total,
-    clear: store.clear,
-  }));
+  const removeItem = useCartStore((s) => s.removeItem);
 
   return (
     <li className="flex items-center gap-4 border border-[#161616]/15 rounded p-3">
