@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCartStore } from "@/store/cart";
+import ErrorFallback from "@/components/ErrorFallback";
 
 export default function CartPage() {
   const { items, removeItem, total, clear } = useCartStore((s) => ({

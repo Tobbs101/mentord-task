@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
+import ErrorFallback from "@/components/ErrorFallback";
 
 type Product = {
   id: number;
@@ -23,8 +24,9 @@ export default async function ProductPage({
 }: {
   params: { id: string };
 }) {
-  const product = await getProduct(params.id);
-  return (
+  try {
+    const product = await getProduct(params.id);
+    return (
     <section className="grid gap-6 md:grid-cols-2">
       <div className="relative w-full aspect-square border border-[#161616]/15 rounded">
         <Image
@@ -55,5 +57,14 @@ export default async function ProductPage({
         </div>
       </div>
     </section>
-  );
+    );
+  } catch (e) {
+    return (
+      <ErrorFallback
+        title="Unable to load product"
+        message="We couldn't fetch this product right now. Please try again later."
+        retryHref="/products"
+      />
+    );
+  }
 }
