@@ -47,7 +47,15 @@ function MobileSidebar({
         <div className="absolute inset-0 bg-black/30" onClick={onClose} />
         <aside className="absolute left-0 top-0 h-full w-64 bg-white shadow-lg p-6 grid content-start gap-4">
           <h3 className="text-sm font-semibold text-[#161616] mb-2 inline-flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#161616" strokeWidth="1.8" strokeLinecap="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#161616"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
               <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />
             </svg>
             Menu
@@ -87,8 +95,22 @@ export default function Header() {
               <path d="M3 12h18M3 6h18M3 18h18" />
             </svg>
           </button>
-          <Link href="/" aria-label="Go home" className="inline-flex items-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161616" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <Link
+            href="/"
+            aria-label="Go home"
+            className="hidden sm:inline-flex items-center"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#161616"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
               <path d="M3 11l9-7 9 7" />
               <path d="M9 22V12h6v10" />
             </svg>

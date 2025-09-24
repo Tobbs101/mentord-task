@@ -44,7 +44,9 @@ export default async function ProductPage({
           <h1 className="text-2xl font-semibold text-[#161616]">
             {product.title}
           </h1>
-          <div className="text-sm text-[#161616]/70">{product.category}</div>
+          <div className="text-sm text-[#161616]/70 capitalize">
+            {product.category}
+          </div>
           <div className="text-base font-semibold text-[#161616]">
             ${product.price.toFixed(2)}
           </div>

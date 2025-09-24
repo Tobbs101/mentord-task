@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useCartStore } from "@/store/cart";
+import CartItem from "@/components/CartItem";
 
 export default function CartPage() {
-  const items = useCartStore((s) => s.items);
-  const removeItem = useCartStore((s) => s.removeItem);
-  const total = useCartStore((s) => s.total);
-  const clear = useCartStore((s) => s.clear);
+  const items = useCartStore((store) => store.items);
+
+  const total = useCartStore((store) => store.total);
+  const clear = useCartStore((store) => store.clear);
 
   return (
     <section className="grid gap-6">
@@ -17,35 +17,15 @@ export default function CartPage() {
       ) : (
         <div className="grid gap-4">
           <ul className="grid gap-3">
-            {items.map((i) => (
-              <li
-                key={i.id}
-                className="flex items-center gap-4 border border-[#161616]/15 rounded p-3"
-              >
-                <div className="relative w-16 h-16">
-                  <Image
-                    src={i.image}
-                    alt={i.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-[#161616] line-clamp-1">
-                    {i.title}
-                  </p>
-                  <p className="text-sm text-[#161616]/70">Qty: {i.quantity}</p>
-                </div>
-                <div className="text-sm font-semibold text-[#161616]">
-                  ${(i.price * i.quantity).toFixed(2)}
-                </div>
-                <button
-                  onClick={() => removeItem(i.id)}
-                  className="text-sm underline"
-                >
-                  Remove
-                </button>
-              </li>
+            {items.map((item) => (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                image={item.image}
+                title={item.title}
+                quantity={item.quantity}
+                price={item.price}
+              />
             ))}
           </ul>
           <div className="flex items-center justify-between border-t border-[#161616]/15 pt-4">
