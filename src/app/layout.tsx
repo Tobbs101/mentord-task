@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";

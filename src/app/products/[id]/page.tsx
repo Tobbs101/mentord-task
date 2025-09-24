@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import ProductPage from "@/pages/ProductPage";
+import { ProductPage } from "@/pages/ProductPage";
 
 export default ProductPage;
 

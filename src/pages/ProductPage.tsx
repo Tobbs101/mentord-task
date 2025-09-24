@@ -1,16 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
 import ErrorFallback from "@/components/ErrorFallback";
 import Link from "next/link";
-
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-};
+import type { Product } from "../../types";
 
 async function getProduct(id: string): Promise<Product> {
   const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
@@ -20,13 +13,14 @@ async function getProduct(id: string): Promise<Product> {
   return res.json();
 }
 
-export default async function ProductPage({
+export async function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   try {
-    const product = await getProduct(params.id);
+    const product = await getProduct(id);
     return (
       <section className="grid gap-6 md:grid-cols-2">
         <div className="relative w-full aspect-square border border-[#161616]/15 rounded">
@@ -73,4 +67,8 @@ export default async function ProductPage({
       />
     );
   }
+}
+
+export default function LegacyProductPage() {
+  return null;
 }
