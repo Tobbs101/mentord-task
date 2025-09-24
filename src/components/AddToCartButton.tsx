@@ -17,7 +17,7 @@ export default function AddToCartButton({
   return (
     <button
       onClick={() => addItem({ id, title, price, image })}
-      className="text-sm bg-[#161616] text-white px-3 py-2 rounded hover:opacity-90"
+      className="text-sm bg-[#161616] cursor-pointer text-white px-3 py-2 rounded hover:opacity-90"
     >
       Add to Cart
     </button>
