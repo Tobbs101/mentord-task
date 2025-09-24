@@ -38,7 +38,9 @@ export default async function ProductPage({
           />
         </div>
         <div className="grid gap-4 content-start">
-          <Link href="/products" className="text-sm underline w-fit">← Back to products</Link>
+          <Link href="/products" className="text-sm underline w-fit">
+            ← Back to products
+          </Link>
           <h1 className="text-2xl font-semibold text-[#161616]">
             {product.title}
           </h1>
